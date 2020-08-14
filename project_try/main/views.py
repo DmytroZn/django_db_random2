@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+import time
 # Create your views here.
 from . models import Agregate
 from . serializer import AgregateSerializer
@@ -11,9 +11,15 @@ class AgregateList(APIView):
     http://0.0.0.0:8001/v1/get-agr/1/2019-08-08and2019-10-18/
     """
     def get(self, request, id_a, ds_de):
+        print('START TO DB')
+        start = time.time()
         obj = Agregate.objects.filter(number_of_controller=id_a, 
                                         zdate__gte=ds_de.split('and')[0],
-                                        zdate__lte=ds_de.split('and')[0])
+                                        zdate__lte=ds_de.split('and')[1])
+        print('FINISH TO DB')
+        print(f'time is up {time.time() - start}')
+        print(len(obj))
+
         serializer = AgregateSerializer(obj, many=True)
         return Response(serializer.data)
 

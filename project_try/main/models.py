@@ -33,8 +33,8 @@ import random
 
 
 
-general_time = datetime(2001, 1, 2, 1, 1, 1)
-for td in range(0, 51840):
+general_time = datetime(2001, 1, 3, 1, 1, 1)
+for td in range(0, 17280):
     general_time +=  timedelta(seconds=5)
     for i in range(1, 51):
 
@@ -49,4 +49,43 @@ for l in range(0, 86400):
     g +=timedelta(seconds=5)
     for i in range(1, 51):
         print(f'date: {g.date()}, time{g.time()}, agr: {i}')
+"""
+###################
+"""
+from datetime import datetime, date, time, timedelta
+import random
+import time
+
+
+start = time.time()
+g = datetime(2001, 1, 2, 1, 1, 1)
+n = 17280
+while n != 0:
+    g +=timedelta(seconds=5)
+    for i in range(1, 51):
+        print(f'date: {g.date()}, time{g.time()}, agr: {i}')
+    n -= 1
+
+print(f'time {time.time() - start}')
+
+
+"""
+
+
+
+"""
+from datetime import datetime, date, time, timedelta
+import random
+import time
+
+start = time.time()
+general_time = datetime(2001, 1, 3, 15, 5, 30)
+n = 17200
+while n != 0:
+    a = [Agregate(number_of_controller=i, t_delta=2, t_input=random.randrange(10, 29, 2), t_output=random.randrange(10, 29, 2), auto_hand='12', capacity=random.randrange(2, 10, 1), capacity_warm=random.randrange(2, 80, 1), capacity_current=random.randrange(2, 80, 1), pressure=random.randrange(2, 80, 1), digital_input=random.randrange(10, 30, 1), digital_output=random.randrange(2, 30, 1), parameters=15, w_accumulate=15, w_current=52, zdate=general_time.date(), ztime=general_time.time()).save() for i in range(1, 51)]
+    general_time +=  timedelta(seconds=5)
+    print(f'date: {general_time.date()}, time: {general_time.time()}')
+    n -= 1
+
+print(f'time is up {time.time() - start}')
 """
